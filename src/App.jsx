@@ -22,7 +22,7 @@ import NoIndexWrapper from '@/components/NoIndexWrapper.jsx';
 import { checkSupabaseHealth } from '@/lib/supabaseHealthCheck.js';
 import { supabase } from '@/lib/customSupabaseClient.js';
 import { initPerformanceMonitoring } from '@/lib/performanceMonitoring.js';
-import importSeoHead from '@/components/import SEOHead from '@/components/SeoHead.jsx'.jsx' from '@/components/import SeoHead from '@/components/SeoHead.jsx'.jsx';
+import SeoHead from '@/components/SeoHead.jsx';
 import { OrganizationSchema } from '@/components/SchemaMarkup.jsx';
 import { runSEOMonitor } from '@/lib/seoValidationMonitor.js';
 
