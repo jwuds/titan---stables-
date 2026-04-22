@@ -1,0 +1,843 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ==========================================================================
+       SEMANTIC COLOR TOKENS (HSL FORMAT - NO hsl() WRAPPER)
+       ========================================================================== */
+    
+    /* Primary - Deep Navy (#0A1128) */
+    --primary: 226 60% 10%; 
+    --primary-foreground: 0 0% 100%;
+    
+    /* Background & Foreground */
+    --background: 0 0% 100%;
+    --foreground: 226 60% 10%;
+    
+    /* Card & Popover */
+    --card: 0 0% 100%;
+    --card-foreground: 226 60% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 60% 10%;
+    
+    /* Secondary - Gold Accent (#D4AF37) */
+    --secondary: 43 64% 53%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Muted */
+    --muted: 220 13% 91%;
+    --muted-foreground: 226 10% 40%;
+    
+    /* Accent - Gold */
+    --accent: 43 64% 53%;
+    --accent-foreground: 226 60% 10%;
+    
+    /* Destructive - Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 43 64% 53%;
+    
+    /* Border Radius */
+    --radius: 0.5rem;
+
+    /* ==========================================================================
+       CUSTOM BRAND VARIABLES
+       ========================================================================== */
+    --gold: 43 64% 53%;
+    --gold-dark: 43 64% 45%;
+    --navy: 226 60% 10%;
+    --burgundy: 0 41% 38%;
+    --gold-accent: #D4AF37;
+    --black-bg: #000000;
+    --white-text: #FFFFFF;
+    
+    /* ==========================================================================
+       RESPONSIVE TYPOGRAPHY SCALE (MOBILE-FIRST)
+       ========================================================================== */
+    
+    /* Base Font Sizes */
+    --text-xs: 0.75rem;      /* 12px */
+    --text-sm: 0.875rem;     /* 14px */
+    --text-base: 1rem;       /* 16px */
+    --text-lg: 1.125rem;     /* 18px */
+    --text-xl: 1.25rem;      /* 20px */
+    --text-2xl: 1.5rem;      /* 24px */
+    --text-3xl: 1.875rem;    /* 30px */
+    --text-4xl: 2.25rem;     /* 36px */
+    --text-5xl: 3rem;        /* 48px */
+    --text-6xl: 3.75rem;     /* 60px */
+    
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    --line-height-loose: 2;
+    
+    /* Letter Spacing */
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.025em;
+    --letter-spacing-wider: 0.05em;
+    --letter-spacing-widest: 0.1em;
+    
+    /* ==========================================================================
+       RESPONSIVE SPACING SCALE
+       ========================================================================== */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+    --space-24: 6rem;     /* 96px */
+    
+    /* ==========================================================================
+       HEADER SPECIFIC TOKENS (MOBILE-FIRST)
+       ========================================================================== */
+    
+    /* Header Heights */
+    --header-height-mobile: 64px;
+    --header-height-desktop: 80px;
+    
+    /* Header Padding */
+    --header-padding-x-mobile: 1rem;
+    --header-padding-x-desktop: 1.5rem;
+    
+    /* Logo Sizing */
+    --logo-height-mobile: 40px;
+    --logo-height-desktop: 50px;
+    
+    /* Navigation Item Spacing */
+    --nav-item-gap-mobile: 0.25rem;
+    --nav-item-gap-desktop: 0.5rem;
+    
+    /* Touch Target Size (WCAG AAA) */
+    --touch-target-min: 44px;
+    --touch-target-preferred: 48px;
+    
+    /* ==========================================================================
+       Z-INDEX SCALE
+       ========================================================================== */
+    --z-base: 1;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    
+    /* ==========================================================================
+       ANIMATION & TRANSITION TOKENS
+       ========================================================================== */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Easing Functions */
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* ==========================================================================
+       SHADOW TOKENS (ACCESSIBILITY-FRIENDLY)
+       ========================================================================== */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (MOBILE-FIRST)
+       ========================================================================== */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 1024px;
+    --breakpoint-lg: 1920px;
+    
+    /* ==========================================================================
+       BLOG & CONTENT VARIABLES
+       ========================================================================== */
+    --blog-title-font: 'Playfair Display', serif;
+    --blog-body-font: 'Montserrat', sans-serif;
+    --section-padding-y: 3rem;
+    --section-padding-y-md: 5rem;
+    --section-padding-y-lg: 7rem;
+    --section-gap: 2rem;
+    
+    /* ==========================================================================
+       CAROUSEL & SPECIALTY COMPONENTS
+       ========================================================================== */
+    --carousel-overlay-gradient: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+    --carousel-text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    --carousel-badge-bg: rgba(212, 175, 55, 0.2);
+    --carousel-badge-border: #D4AF37;
+    --carousel-nav-hover-scale: 1.05;
+    --carousel-transition-duration: 0.6s;
+  }
+  
+  /* ==========================================================================
+     DARK MODE TOKENS
+     ========================================================================== */
+  .dark {
+    --background: 226 50% 8%;
+    --foreground: 0 0% 100%;
+    
+    --card: 226 50% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 226 50% 8%;
+    --popover-foreground: 0 0% 96%;
+    
+    --primary: 43 64% 53%;
+    --primary-foreground: 226 60% 10%;
+    
+    --secondary: 226 20% 15%;
+    --secondary-foreground: 0 0% 96%;
+    
+    --muted: 226 20% 15%;
+    --muted-foreground: 0 0% 70%;
+    
+    --accent: 43 64% 53%;
+    --accent-foreground: 0 0% 10%;
+    
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 43 64% 53%;
+  }
+
+  /* ==========================================================================
+     BASE ELEMENT STYLES
+     ========================================================================== */
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--blog-body-font);
+    overflow-x: hidden;
+    letter-spacing: var(--letter-spacing-normal);
+    font-size: var(--text-base);
+    line-height: var(--line-height-relaxed);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ==========================================================================
+     TYPOGRAPHY BASE STYLES
+     ========================================================================== */
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight text-foreground font-bold;
+    font-family: var(--blog-title-font);
+    margin-top: 0;
+  }
+
+  h1 { 
+    font-size: var(--text-3xl);
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 { 
+    font-size: var(--text-2xl);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+  
+  h3 { 
+    font-size: var(--text-xl);
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  
+  /* Responsive Typography - Tablet & Up */
+  @media (min-width: 640px) {
+    h1 { font-size: var(--text-4xl); }
+    h2 { font-size: var(--text-3xl); }
+    h3 { font-size: var(--text-2xl); }
+  }
+  
+  /* Responsive Typography - Desktop & Up */
+  @media (min-width: 1024px) {
+    h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+    h3 { font-size: var(--text-3xl); }
+  }
+  
+  p { 
+    font-size: var(--text-base);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+  
+  /* ==========================================================================
+     INTERACTIVE ELEMENT BASE STYLES (ACCESSIBILITY-FOCUSED)
+     ========================================================================== */
+  
+  /* Links */
+  a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  
+  a:hover {
+    color: hsl(var(--accent));
+  }
+  
+  a:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  /* Buttons */
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    min-height: var(--touch-target-min);
+    transition: all var(--transition-base);
+  }
+  
+  button:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+  
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Form Elements */
+  input, 
+  textarea, 
+  select {
+    font-family: inherit;
+    font-size: var(--text-base);
+    line-height: var(--line-height-normal);
+    min-height: var(--touch-target-min);
+  }
+  
+  /* Semantic Content Formatting */
+  article ul { 
+    @apply list-disc list-inside mb-6 pl-4 space-y-2; 
+  }
+  
+  article ol { 
+    @apply list-decimal list-inside mb-6 pl-4 space-y-2; 
+  }
+  
+  article table { 
+    @apply w-full mb-8 border-collapse border border-border bg-card shadow-sm rounded-lg overflow-hidden; 
+  }
+  
+  article th { 
+    @apply bg-secondary/10 text-left p-4 font-semibold border-b border-border; 
+  }
+  
+  article td { 
+    @apply p-4 border-b border-border text-foreground/80; 
+  }
+}
+
+@layer components {
+  /* ==========================================================================
+     TYPOGRAPHY UTILITIES
+     ========================================================================== */
+  
+  .font-heading {
+    font-family: var(--blog-title-font);
+  }
+  
+  .font-body {
+    font-family: var(--blog-body-font);
+  }
+  
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  /* ==========================================================================
+     LUXURY COMPONENT STYLES
+     ========================================================================== */
+  
+  .luxury-card {
+    @apply bg-card border border-border rounded-xl shadow-md hover:shadow-xl transition-all duration-300;
+  }
+  
+  .luxury-button {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-full hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl border border-transparent hover:border-[#D4AF37]/50;
+    min-height: var(--touch-target-min);
+  }
+  
+  .luxury-input {
+    @apply border-b-2 border-slate-200 focus:border-[#D4AF37] bg-transparent transition-colors outline-none py-3 px-2 text-foreground w-full;
+    min-height: var(--touch-target-min);
+  }
+  
+  /* ==========================================================================
+     LAYOUT UTILITIES
+     ========================================================================== */
+  
+  .section-container {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 640px) {
+    .section-container {
+      padding-top: var(--section-padding-y-md);
+      padding-bottom: var(--section-padding-y-md);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section-container {
+      padding-top: var(--section-padding-y-lg);
+      padding-bottom: var(--section-padding-y-lg);
+    }
+  }
+  
+  .section-content {
+    @apply container mx-auto px-4 relative z-10;
+  }
+  
+  .section-header {
+    @apply text-center mb-16 max-w-3xl mx-auto;
+  }
+  
+  /* ==========================================================================
+     HEADER & NAVIGATION UTILITIES
+     ========================================================================== */
+  
+  .header-container {
+    height: var(--header-height-mobile);
+    padding-left: var(--header-padding-x-mobile);
+    padding-right: var(--header-padding-x-mobile);
+  }
+  
+  @media (min-width: 1024px) {
+    .header-container {
+      height: var(--header-height-desktop);
+      padding-left: var(--header-padding-x-desktop);
+      padding-right: var(--header-padding-x-desktop);
+    }
+  }
+  
+  .nav-link {
+    @apply flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap;
+    min-height: var(--touch-target-min);
+  }
+  
+  .nav-link-active {
+    @apply bg-secondary/20 text-primary font-bold;
+  }
+  
+  .nav-link-inactive {
+    @apply text-foreground/80 hover:bg-secondary/10 hover:text-primary;
+  }
+  
+  /* ==========================================================================
+     MOBILE MENU UTILITIES
+     ========================================================================== */
+  
+  .mobile-menu-overlay {
+    @apply fixed inset-0 bg-black/50 z-[1040];
+    backdrop-filter: blur(4px);
+  }
+  
+  .mobile-menu-panel {
+    @apply fixed top-0 right-0 bottom-0 w-full max-w-sm bg-card shadow-2xl z-[1050];
+  }
+  
+  .mobile-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-base font-medium;
+    min-height: var(--touch-target-min);
+  }
+  
+  /* ==========================================================================
+     TOUCH-FRIENDLY UTILITIES
+     ========================================================================== */
+  
+  .touch-target {
+    min-width: var(--touch-target-min);
+    min-height: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .touch-target-lg {
+    min-width: var(--touch-target-preferred);
+    min-height: var(--touch-target-preferred);
+  }
+  
+  /* ==========================================================================
+     FOCUS STATES (ACCESSIBILITY)
+     ========================================================================== */
+  
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  .focus-ring-gold {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2;
+  }
+  
+  /* ==========================================================================
+     SPECIALIZED COMPONENT STYLES
+     ========================================================================== */
+  
+  .ad-badge {
+    @apply inline-flex items-center gap-2 bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#D4AF37] px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider;
+  }
+  
+  .ai-tldr-box {
+    @apply bg-secondary/10 border-l-4 border-secondary p-6 rounded-r-xl mb-8 shadow-sm;
+  }
+  
+  .ai-key-facts {
+    @apply bg-card border border-border rounded-xl p-6 mb-8 shadow-sm;
+  }
+  
+  .ai-summary-box {
+    @apply bg-primary text-primary-foreground p-8 rounded-xl mb-8;
+  }
+  
+  /* ==========================================================================
+     CAROUSEL UTILITIES
+     ========================================================================== */
+  
+  .carousel-overlay {
+    background: var(--carousel-overlay-gradient);
+  }
+  
+  .carousel-text-glow {
+    text-shadow: var(--carousel-text-shadow);
+  }
+  
+  .carousel-badge {
+    background: var(--carousel-badge-bg);
+    border-color: var(--carousel-badge-border);
+  }
+  
+  .carousel-nav-button {
+    @apply rounded-full backdrop-blur-sm border-2 transition-all duration-300;
+    border-color: var(--carousel-badge-border);
+  }
+  
+  .carousel-nav-button:hover {
+    transform: scale(var(--carousel-nav-hover-scale));
+  }
+  
+  /* ==========================================================================
+     BLOG IMAGE OPTIMIZATION
+     ========================================================================== */
+  
+  .blog-image-container {
+    position: relative;
+    overflow: hidden;
+    background-color: hsl(var(--muted));
+  }
+
+  .blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out;
+  }
+
+  .blog-image.image-loading {
+    opacity: 0;
+    filter: blur(8px);
+  }
+
+  .blog-image.image-loaded {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  .blog-image-16-9 {
+    aspect-ratio: 16 / 9;
+  }
+
+  .blog-image-4-3 {
+    aspect-ratio: 4 / 3;
+  }
+
+  .blog-image-square {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@layer utilities {
+  /* ==========================================================================
+     ANIMATION UTILITIES
+     ========================================================================== */
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-left {
+    animation: slideLeft 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-right {
+    animation: slideRight 0.3s ease-out forwards;
+  }
+  
+  .animate-scale-up {
+    animation: scaleUp 0.2s ease-out forwards;
+  }
+  
+  .smooth-transition {
+    transition: all var(--transition-base);
+  }
+  
+  .smooth-transition-slow {
+    transition: all var(--transition-slow);
+  }
+  
+  /* ==========================================================================
+     RESPONSIVE DISPLAY UTILITIES
+     ========================================================================== */
+  
+  .hide-on-mobile {
+    @apply hidden;
+  }
+  
+  @media (min-width: 1024px) {
+    .hide-on-mobile {
+      @apply block;
+    }
+  }
+  
+  .show-on-mobile {
+    @apply block;
+  }
+  
+  @media (min-width: 1024px) {
+    .show-on-mobile {
+      @apply hidden;
+    }
+  }
+  
+  /* ==========================================================================
+     CONTRAST & ACCESSIBILITY UTILITIES
+     ========================================================================== */
+  
+  .text-contrast-high {
+    color: var(--white-text);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .bg-black-luxury {
+    background-color: var(--black-bg);
+  }
+  
+  .text-gold-accent {
+    color: var(--gold-accent);
+  }
+  
+  .border-gold-accent {
+    border-color: var(--gold-accent);
+  }
+  
+  /* ==========================================================================
+     RESPONSIVE SPACING UTILITIES
+     ========================================================================== */
+  
+  .container-padding {
+    padding-left: var(--header-padding-x-mobile);
+    padding-right: var(--header-padding-x-mobile);
+  }
+  
+  @media (min-width: 1024px) {
+    .container-padding {
+      padding-left: var(--header-padding-x-desktop);
+      padding-right: var(--header-padding-x-desktop);
+    }
+  }
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes scaleUp {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* ==========================================================================
+   GLOBAL FORM VISIBILITY OVERRIDES (PRESERVED FROM ORIGINAL)
+   ========================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+textarea,
+select {
+  background-color: #FCFCFC !important;
+  color: #1A1A1A !important;
+  border: 1px solid #D1D1D1 !important;
+  border-radius: 6px !important;
+  min-height: var(--touch-target-min) !important;
+  padding: 10px 14px !important;
+  font-size: 16px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #1B3A5C !important;
+  box-shadow: 0 0 0 3px rgba(27, 58, 92, 0.2) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #666666 !important;
+  opacity: 1 !important;
+}
+
+/* ==========================================================================
+   CART & CHECKOUT STYLING (PRESERVED FROM ORIGINAL)
+   ========================================================================== */
+
+.cart-button, 
+.cart-btn {
+  background-color: #D4AF37 !important;
+  color: #1A1A1A !important;
+  border: 2px solid #D4AF37 !important;
+  padding: 12px 20px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  min-width: 120px !important;
+  min-height: var(--touch-target-min) !important;
+}
+
+.cart-button:hover, 
+.cart-btn:hover {
+  background-color: #B8860B !important;
+  border-color: #B8860B !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3) !important;
+}
