@@ -22,7 +22,7 @@ import NoIndexWrapper from '@/components/NoIndexWrapper.jsx';
 import { checkSupabaseHealth } from '@/lib/supabaseHealthCheck.js';
 import { supabase } from '@/lib/customSupabaseClient.js';
 import { initPerformanceMonitoring } from '@/lib/performanceMonitoring.js';
-import SEOHead from '@/components/SEOHead.jsx';
+import importSeoHead from '@/components/import SEOHead from '@/components/SeoHead.jsx'.jsx' from '@/components/import SeoHead from '@/components/SeoHead.jsx'.jsx';
 import { OrganizationSchema } from '@/components/SchemaMarkup.jsx';
 import { runSEOMonitor } from '@/lib/seoValidationMonitor.js';
 
@@ -170,7 +170,7 @@ function App() {
               <ContentProvider>
                 <CartProvider>
                   <ScrollToTop />
-                  <SEOHead title="Titan Stables - Premium KFPS Friesian Horses" description="Premium Friesian horses." />
+                  <import SEOHead from '@/components/SeoHead.jsx' title="Titan Stables - Premium KFPS Friesian Horses" description="Premium Friesian horses." />
                   <OrganizationSchema />
                   <UrlNormalization>
                     <GeoBlocker>
