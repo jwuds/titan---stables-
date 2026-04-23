@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, ArrowRight, Globe } from 'lucide-react';
-import SEOHead from '@/components/SEOHead';
+import SeoHead from '@/components/SeoHead';
 import LazyImage from '@/components/LazyImage';
 import { Button } from '@/components/ui/button';
 
@@ -53,7 +53,7 @@ const regionsData = [
 const LocationsPage = () => {
   return (
     <div className="min-h-screen bg-slate-50">
-      <SEOHead 
+      <SeoHead 
         title="Our Regional Hubs | Titan Stables"
         description="Explore Titan Stables' regional equestrian hubs across North America. We provide dedicated Friesian importation, transport, and care tailored to every region."
         url="https://titanstables.org/locations"

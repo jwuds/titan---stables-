@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import SEOHead from '@/components/SEOHead.jsx';
+import SeoHead from '@/components/SeoHead.jsx';
 import { generateLocalBusinessSchema, LocalBusinessSchema } from '@/components/SchemaMarkup.jsx';
 import LazyImage from '@/components/LazyImage.jsx';
 import { MapPin, Phone, Star, ShieldCheck, CheckCircle } from 'lucide-react';
@@ -32,7 +32,7 @@ const LocationPage = ({ locationData }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      <SEOHead 
+      <SeoHead 
         title={pageTitle}
         description={pageDesc}
         url={canonicalUrl}

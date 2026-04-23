@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { MapPin, Phone, ArrowRight, ShieldCheck, Truck, Sun, Snowflake } from 'lucide-react';
-import SEOHead from '@/components/SEOHead';
+import SeoHead from '@/components/SeoHead';
 import LazyImage from '@/components/LazyImage';
 import { Button } from '@/components/ui/button';
 import { useHorses } from '@/hooks/usePageData';
@@ -76,7 +76,7 @@ const RegionalHubPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <SEOHead 
+      <SeoHead 
         title={`${currentRegion.title} | Titan Stables`}
         description={currentRegion.description}
         url={`https://titanstables.org/locations/${region}`}
