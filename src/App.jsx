@@ -34,7 +34,7 @@ const AdminLoginPage = lazy(() => import('@/pages/AdminLoginPage.jsx'));
 const AboutPage = lazy(() => import('@/pages/AboutPage.jsx'));
 const ContactPage = lazy(() => import('@/pages/ContactPage.jsx'));
 const PoliciesPage = lazy(() => import('@/pages/PoliciesPage.jsx'));
-const FAQPage = lazy(() => import('@/pages/FAQPage.jsx'));
+const FAQPage = lazy(() => import('@/pages/FaqPage.jsx'));
 const SitemapPage = lazy(() => import('@/pages/SitemapPage.jsx'));
 const ClickAdPage = lazy(() => import('@/pages/ClickAdPage.jsx'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage.jsx'));
