@@ -170,7 +170,7 @@ function App() {
               <ContentProvider>
                 <CartProvider>
                   <ScrollToTop />
-                  <import SEOHead from '@/components/SeoHead.jsx' title="Titan Stables - Premium KFPS Friesian Horses" description="Premium Friesian horses." />
+                  <SeoHead title="Titan Stables - Premium KFPS Friesian Horses" description="Premium Friesian horses." />
                   <OrganizationSchema />
                   <UrlNormalization>
                     <GeoBlocker>
